@@ -33,6 +33,6 @@ bool isPrime(long long num) {
 	return true;
 }
 int main(int argc, char *argv[]) {
-	cout << isPrime(2086137353) << endl;
+	cout << isPrime(3) << endl;
 	return 0;
 }

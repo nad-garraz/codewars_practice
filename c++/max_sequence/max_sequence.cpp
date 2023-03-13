@@ -26,9 +26,9 @@ int main(void) {
 
 int maxSequence(const std::vector<int> &arr) {
   int sum{}, max{};
-  for (int i{}; i < arr.size(); i++) {
+  for (size_t i{}; i < arr.size(); i++) {
     sum = 0;
-      for (int j = i; j < arr.size(); j++) {
+      for (size_t j = i; j < arr.size(); j++) {
           sum += arr[j];
           max = std::max(max, sum);
       }
