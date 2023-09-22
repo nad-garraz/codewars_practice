@@ -15,6 +15,7 @@ Have fun! :D
 
 */
 
+
 class Person {
   constructor(firstName = "John", lastName = "Doe", age = 0, gender = "Male") {
     Object.assign(this, { firstName, lastName, age, gender });
