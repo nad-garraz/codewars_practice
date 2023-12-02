@@ -49,7 +49,7 @@ Have fun :)
 */
 
 
-
+//TODO... está complicado
 function justify (text, width) {
  return text 
 }

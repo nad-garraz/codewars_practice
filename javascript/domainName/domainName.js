@@ -9,5 +9,6 @@ Write a function that when given a URL as a string, parses out just the domain n
 
 
 function domainName (url) {
-  
+ //TODO: Probar con Regex
+  return url
 }

@@ -31,10 +31,10 @@ using namespace std;
 
 class DoubleLinear {
 public:
-  bool alreadyInSequence(int *sequence, int y, int size) {
-    for (int j{size}; j >= 0; --j) {
+
+bool alreadyInSequence(vector<int> &sequence, int y) {
+    for (int j = 0; j < sequence.size(); ++j) {
       if (y == sequence[j]) {
-        cout << "YO" << endl;
         return true;
       }
     }
@@ -42,9 +42,8 @@ public:
   }
 
   int dblLinear(int n) {
-    int *sequence = nullptr;
-    sequence = new int[n];
-    delete[] sequence;
+    vector<int> sequence;
+    sequence.push_back(1);
 
     sequence[0] = 1;
 
@@ -53,7 +52,7 @@ public:
     while (i < n) {
       y = 2 * next + 1;
       z = y + next;
-      if (alreadyInSequence(sequence, y, size)) {
+      if (alreadyInSequence(sequence, y)) {
         sequence[add] = z;
         add++;
       } else {
@@ -77,21 +76,65 @@ public:
     }
 
     return 0;
-    //
-    //
-    // // TODO
-    //     sort(x.begin(), x.end());
-    //     int k{};
-    //     for (auto item : x) {
-    //       cout << k << " :  " << item << endl;
-    //       k++;
-    //     }
-    //     return x[n];
   }
 };
 
+
+
+// #include <algorithm>
+// #include <iostream>
+// #include <vector>
+//
+// using namespace std;
+//
+// class DoubleLinear {
+// public:
+//   bool alreadyInSequence(vector<int> &sequence, int y) {
+//     for (int j = 0; j < sequence.size(); ++j) {
+//       if (y == sequence[j]) {
+//         return true;
+//       }
+//     }
+//     return false;
+//   }
+//
+//   int dblLinear(int n) {
+//     vector<int> sequence;
+//     sequence.push_back(1);
+//
+//     int y, z;
+//     int i = 0, next = 1, add, size = 1;
+//     while (i < n - 1) {
+//       y = 2 * sequence[next] + 1;
+//       z = sequence[next] + 3;
+//
+//       if (alreadyInSequence(sequence, y)) {
+//         sequence.push_back(z);
+//         add = sequence.size() - 1;
+//       } else {
+//         add = i + 1;
+//         while (add < sequence.size() && y > sequence[add]) {
+//           add++;
+//         }
+//         sequence.insert(sequence.begin() + add, y);
+//         sequence.insert(sequence.begin() + add + 1, z);
+//       }
+//
+//       size += add;
+//       ++i;
+//       next = i;
+//     }
+//
+//     return sequence[n];
+//   }
+// };
+//
+
+
+
+
 int main(int argc, char *argv[]) {
   DoubleLinear Dl;
-  cout << Dl.dblLinear(1000) << endl;
+  cout << Dl.dblLinear(6000) << endl;
   return 0;
 }

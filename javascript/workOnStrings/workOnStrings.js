@@ -68,5 +68,7 @@ function workOnStrings(a, b) {
   return `Concha puta: ${ans}`
 }
 // Funciona pero es la cosa más horrible jamás vista.
+// TODO: Probar usar regex
+// :
 console.log(workOnStrings("abab", "bababa"))
 console.log(workOnStrings('a', 'A'));
