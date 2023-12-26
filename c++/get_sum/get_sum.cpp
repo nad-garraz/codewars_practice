@@ -15,20 +15,28 @@ Examples (a, b) --> output (explanation)
 #include <iostream>
 
 using namespace std;
+
 int get_sum(int a, int b);
 
 int main(void) {
-	cout << get_sum(3, 3);
+	cout << get_sum(3, 4);
 	return 0;
 }
 
-int get_sum(int a, int b) {
-	int sum{};
-	for ( int i = min(a,b); i <= max(a,b); i++ ) {
-		sum += i;
-	};
-	return sum;
+// int get_sum(int a, int b) {
+//   int answer=0;
+//   for (int i = min(a,b); i <= max(a,b); i++){
+//     answer += i; 
+//   }
+//   return answer;
+// }
+
+int get_sum(int a, int b){
+  int n = (a > b ? a - b : b - a ) + 1;
+    return n*(a+b)/2;
 }
+
+
 
 // Para pensar:
 /* int get_sum(int a, int b)
