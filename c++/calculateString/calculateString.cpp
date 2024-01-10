@@ -32,7 +32,8 @@ string calculateString(std::string calcIt) {
     string str{""}, str1 = "", str2 = "", operators = "+-*/", numbers = "0123456789.-";
     double num{};
     size_t found = calcIt.find_first_of(numbers, 0);
-    while ( found != string::npos ) {
+    while ( found != string::npos )
+    {
         str += calcIt[found];
         found = calcIt.find_first_of("0123456789.*+-/", found + 1);
     }
@@ -43,7 +44,8 @@ string calculateString(std::string calcIt) {
     char op = str[found];
     double a = stod(str1);
     double b = stod(str2);
-    switch (op) {
+    switch (op)
+    {
         case ('+'): { num = a + b; break;};
         case ('-'): { num = a - b; break;};
         case ('*'): { num = a * b; break;};

@@ -43,68 +43,77 @@ det(d_minor)
 
 using namespace std;
 
-long long det2x2(vector<vector<long long>> matrix);
+long long                 det2x2(vector<vector<long long>> matrix);
 vector<vector<long long>> get_minor(vector<vector<long long>> matrix, int col);
-long long determinant(vector<vector<long long>> matrix);
+long long                 determinant(vector<vector<long long>> matrix);
 
-int main() {
+int main()
+{
   // vector<vector<long long>> matrix = {{1, 2, 3}, {2, 1, 1}, {1, 1, 1}};
   // vector<vector<long long>> matrix = {{2, 3, 4}, {5, 6, 7}, {9, 9, 9}};
   // vector<vector<long long>> matrix = {{12, 2, 1}, {3, 44, 23}, {3, 3, 2}};
-  // vector<vector<long long>> matrix = {
-  //   {1, 0, 2, 0}, {2, 2, 3, 2}, {3, 3, 2, 0}, {0, 2, 2, 3}
-  // };
-  vector<vector<long long>> matrix = {{2}};
+  // vector<vector<long long>> matrix = {{1, 0, 2, 0}, {2, 2, 3, 2}, {3, 3, 2,
+  // 0}, {0, 2, 2, 3}};
+  vector<vector<long long>> matrix = {{1, 0, 2, 0, 4}, {2, 2, 3, 2, 1}, {3, 3, 2, 0, 3}, {0, 2, 2, 3, 4}, {0, 2, -1, 3, 4}};
+  // vector<vector<long long>> matrix = {{2}};
   cout << "Determinante: " << determinant(matrix) << endl;
   return 0;
 }
 
-
 // return determinant of 2x2 matrix
-long long det2x2(vector<vector<long long>> matrix) {
-  return matrix[0][0] * matrix[1][1] - matrix[1][0] * matrix[0][1];
-}
-
+long long det2x2(vector<vector<long long>> matrix) { return matrix[0][0] * matrix[1][1] - matrix[1][0] * matrix[0][1]; }
 
 // returns matrix with out first row and #col column.
-vector<vector<long long>> get_minor(vector<vector<long long>> matrix, int col) {
-  int dim = matrix.size();
+vector<vector<long long>> get_minor(vector<vector<long long>> matrix, int col)
+{
+  int                       dim = matrix.size();
   vector<vector<long long>> minor;
-  for (int row{1}; row < dim; ++row) {
+  for (int row{1}; row < dim; ++row)
+  {
     vector<long long> r;
-    for (int column{}; column < dim; ++column) {
-      if (column != col) {
+    for (int column{}; column < dim; ++column)
+    {
+      if (column != col)
+      {
         r.push_back(matrix[row][column]);
       }
     }
     minor.push_back(r);
   }
-//   cout << "print minor" << endl;
-// for(int r{}; r < dim - 1; r++) {
-//     for (int c{}; c < dim -1; c++) {
-//       cout << answer[r][c] << " ";
-//     }
-//     cout << endl;
-//   }
+  // cout << "print minor" << endl;
+  // for (int r{}; r < dim - 1; r++)
+  // {
+  //   for (int c{}; c < dim - 1; c++)
+  //   {
+  //     cout << minor[r][c] << " ";
+  //   }
+  //   cout << endl;
+  // }
   return minor;
 }
 
-
-long long determinant(vector<vector<long long>> matrix) {
+long long determinant(vector<vector<long long>> matrix)
+{
   int dim = matrix.size();
 
-  if (dim == 1) {
+  if (dim == 1)
+  {
     return matrix[0][0];
   }
-  else if (dim == 2) {
+  else if (dim == 2)
+  {
     return det2x2(matrix);
   }
 
   long long det{};
-  for (int column{0}; column < dim; column++) {
-    if (column % 2) {
+  for (int column{0}; column < dim; column++)
+  {
+    if (column % 2)
+    {
       det -= matrix[0][column] * determinant(get_minor(matrix, column));
-    } else {
+    }
+    else
+    {
       det += matrix[0][column] * determinant(get_minor(matrix, column));
     }
   }

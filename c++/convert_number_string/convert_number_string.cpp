@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
 std::string number_to_string(int num) {
 	string str = {""};
 	while ( num ) {
-		char a = num % 10 + 48; // le sumo para que se el character numérico
+		static char a = num % 10 + 48; // le sumo para que se el character numérico
 		num = num /10; // Achico el número truncando el último número del "int"
 		str += a;
 	}
