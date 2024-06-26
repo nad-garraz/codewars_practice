@@ -80,15 +80,15 @@ vector<vector<long long>> get_minor(vector<vector<long long>> matrix, int col)
     }
     minor.push_back(r);
   }
-  // cout << "print minor" << endl;
-  // for (int r{}; r < dim - 1; r++)
-  // {
-  //   for (int c{}; c < dim - 1; c++)
-  //   {
-  //     cout << minor[r][c] << " ";
-  //   }
-  //   cout << endl;
-  // }
+  cout << "print minor" << endl;
+  for (int r{}; r < dim - 1; r++)
+  {
+    for (int c{}; c < dim - 1; c++)
+    {
+      cout << minor[r][c] << " ";
+    }
+    cout << endl;
+  }
   return minor;
 }
 
