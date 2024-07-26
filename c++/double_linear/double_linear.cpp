@@ -23,118 +23,86 @@ Note:
 Focus attention on efficiency
 */
 
-#include <algorithm>
 #include <iostream>
-#include <math.h>
+#include <queue>
 #include <vector>
-using namespace std;
 
-class DoubleLinear {
+class DoubleLinear
+{
 public:
+  static int dblLinear(int n)
+  {
+    int              x{1};
+    int              y, z = 0;
+    int              element{};
+    std::vector<int> sol = {1};
+    std::queue<int>  z_queue;
 
-bool alreadyInSequence(vector<int> &sequence, int y) {
-    for (int j = 0; j < sequence.size(); ++j) {
-      if (y == sequence[j]) {
-        return true;
+    while (sol.size() <= n) // Si n = 1 el
+    {
+      y = 2 * x + 1;
+      /*std::cout << "y: " << y << std::endl;*/
+      /*std::cout << "x: " << x << std::endl;*/
+      int z = y + x;
+      if (true)
+      {
+        int z = y + x;
+        z_queue.push(z);
       }
-    }
-    return false;
-  }
 
-  int dblLinear(int n) {
-    vector<int> sequence;
-    sequence.push_back(1);
+      while (y > z_queue.front() && z_queue.size() > 0)
+      {
+        if (z_queue.front() == sol.back())
+        {
+          z_queue.pop();
+        }
+        else
+        {
+          /*std::cout << "zpush: " << z;*/
+          sol.push_back(z_queue.front());
+          if (sol.size() > n)
+          {
 
-    sequence[0] = 1;
-
-    int y{}, z{};
-    int i{}, next{1}, add{1}, size{1};
-    while (i < n) {
-      y = 2 * next + 1;
-      z = y + next;
-      if (alreadyInSequence(sequence, y)) {
-        sequence[add] = z;
-        add++;
-      } else {
-        if (y < sequence[i + 1]) {
-          sequence[add] = sequence[i + 1];
-          sequence[i + 1] = y;
-          sequence[add + 1] = z;
-          add += 2;
-        } else {
-          sequence[add] = y;
-          sequence[add + 1] = z;
-          add += 2;
+            /*std::cout << "sol: ";*/
+            /*for (int elem : sol)*/
+            /*{*/
+            /*  std::cout << elem << ",";*/
+            /*}*/
+            /**/
+            /*std::cout << "return" << std::endl;*/
+            return sol.back();
+          }
         }
       }
-      size += add;
-      ++i;
-      next = sequence[i];
-    }
-    for (int j{}; j < n; j++) {
-      cout << sequence[j] << endl;
-    }
 
-    return 0;
-  }
+      sol.push_back(y);
+      x = sol[++element];
+
+      /*std::cout << "element: " << element << "\n" << "sol: ";*/
+      /**/
+      /*for (int elem : sol)*/
+      /*{*/
+      /*  std::cout << elem << ",";*/
+      /*}*/
+      /**/
+      /*std::cout << std::endl;*/
+      /*std::cout << "Next x: " << x << "\n\n\n\n";*/
+    }
+    return sol.back();
+  };
 };
 
-
-
-// #include <algorithm>
-// #include <iostream>
-// #include <vector>
-//
-// using namespace std;
-//
-// class DoubleLinear {
-// public:
-//   bool alreadyInSequence(vector<int> &sequence, int y) {
-//     for (int j = 0; j < sequence.size(); ++j) {
-//       if (y == sequence[j]) {
-//         return true;
-//       }
-//     }
-//     return false;
-//   }
-//
-//   int dblLinear(int n) {
-//     vector<int> sequence;
-//     sequence.push_back(1);
-//
-//     int y, z;
-//     int i = 0, next = 1, add, size = 1;
-//     while (i < n - 1) {
-//       y = 2 * sequence[next] + 1;
-//       z = sequence[next] + 3;
-//
-//       if (alreadyInSequence(sequence, y)) {
-//         sequence.push_back(z);
-//         add = sequence.size() - 1;
-//       } else {
-//         add = i + 1;
-//         while (add < sequence.size() && y > sequence[add]) {
-//           add++;
-//         }
-//         sequence.insert(sequence.begin() + add, y);
-//         sequence.insert(sequence.begin() + add + 1, z);
-//       }
-//
-//       size += add;
-//       ++i;
-//       next = i;
-//     }
-//
-//     return sequence[n];
-//   }
-// };
-//
-
-
-
-
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
   DoubleLinear Dl;
-  cout << Dl.dblLinear(6000) << endl;
+  std::cout << "n = 1 -> " << Dl.dblLinear(1) <<"  Fin" << std::endl;
+  std::cout << "n = 2 -> " << Dl.dblLinear(2) << "  Fin" << std::endl;
+  std::cout << "n = 3 -> " << Dl.dblLinear(3) << "  Fin" << std::endl;
+  std::cout << "n = 4 -> " << Dl.dblLinear(4) << std::endl;
+  std::cout << "n = 5 -> " << Dl.dblLinear(5) << std::endl;
+  std::cout << "n = 10 -> " << Dl.dblLinear(10) << std::endl;
+  std::cout << "n = 20 -> " << Dl.dblLinear(20) << std::endl;
+  std::cout << "n = 30 -> " << Dl.dblLinear(30) << std::endl;
+  std::cout << "n = 50 -> " << Dl.dblLinear(50) << std::endl;
   return 0;
 }
