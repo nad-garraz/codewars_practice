@@ -12,16 +12,15 @@ long long mygcd(long long a, long long b);
 
 int main()
 {
-  std::cout << mygcd(600, 450);
-  return 0;
+     std::cout << mygcd(600, 450);
+     return 0;
 }
 
 long long mygcd(long long a, long long b)
 {
-  if (b == 0)
-    return a;
+     if (b == 0) return a;
 
-  return mygcd(b, a % b);
+     return mygcd(b, a % b);
 }
 
 // long long mygcd(long long a, long long b)

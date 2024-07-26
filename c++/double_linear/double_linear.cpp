@@ -33,24 +33,16 @@ public:
   static int dblLinear(int n)
   {
     int              x{1};
-    int              y, z = 0;
-    int              element{};
+    int              y, element{};
     std::vector<int> sol = {1};
     std::queue<int>  z_queue;
 
-    while (sol.size() <= n) // Si n = 1 el
+    while (sol.size() <= n)
     {
       y = 2 * x + 1;
-      /*std::cout << "y: " << y << std::endl;*/
-      /*std::cout << "x: " << x << std::endl;*/
-      int z = y + x;
-      if (true)
-      {
-        int z = y + x;
-        z_queue.push(z);
-      }
+      z_queue.push(y + x); //z = y + x
 
-      while (y > z_queue.front() && z_queue.size() > 0)
+      while (y > z_queue.front())
       {
         if (z_queue.front() == sol.back())
         {
@@ -58,35 +50,15 @@ public:
         }
         else
         {
-          /*std::cout << "zpush: " << z;*/
           sol.push_back(z_queue.front());
           if (sol.size() > n)
           {
-
-            /*std::cout << "sol: ";*/
-            /*for (int elem : sol)*/
-            /*{*/
-            /*  std::cout << elem << ",";*/
-            /*}*/
-            /**/
-            /*std::cout << "return" << std::endl;*/
             return sol.back();
           }
         }
       }
-
       sol.push_back(y);
       x = sol[++element];
-
-      /*std::cout << "element: " << element << "\n" << "sol: ";*/
-      /**/
-      /*for (int elem : sol)*/
-      /*{*/
-      /*  std::cout << elem << ",";*/
-      /*}*/
-      /**/
-      /*std::cout << std::endl;*/
-      /*std::cout << "Next x: " << x << "\n\n\n\n";*/
     }
     return sol.back();
   };
@@ -95,9 +67,10 @@ public:
 int main(int argc, char *argv[])
 {
   DoubleLinear Dl;
-  std::cout << "n = 1 -> " << Dl.dblLinear(1) <<"  Fin" << std::endl;
-  std::cout << "n = 2 -> " << Dl.dblLinear(2) << "  Fin" << std::endl;
-  std::cout << "n = 3 -> " << Dl.dblLinear(3) << "  Fin" << std::endl;
+  std::cout << "n = 0 -> " << Dl.dblLinear(0) << std::endl;
+  std::cout << "n = 1 -> " << Dl.dblLinear(1) << std::endl;
+  std::cout << "n = 2 -> " << Dl.dblLinear(2) << std::endl;
+  std::cout << "n = 3 -> " << Dl.dblLinear(3) << std::endl;
   std::cout << "n = 4 -> " << Dl.dblLinear(4) << std::endl;
   std::cout << "n = 5 -> " << Dl.dblLinear(5) << std::endl;
   std::cout << "n = 10 -> " << Dl.dblLinear(10) << std::endl;

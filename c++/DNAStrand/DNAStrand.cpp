@@ -17,38 +17,31 @@ dnaStrand [A,A,A,A] `shouldBe` [T,T,T,T]
 */
 
 #include <cstdio>
-#include <string>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-std::string DNAStrand(const std::string& dna);
+std::string DNAStrand(const std::string &dna);
 
 int main(void)
 {
-	std::string ans = DNAStrand("ACAG");
-	std::cout << ans;
+  std::string ans = DNAStrand("ACAG");
+  std::cout << ans;
 }
 
-
-std::string DNAStrand(const std::string& dna) {
-	std::string s{};
-for ( char item : dna ) {
-	switch (item) {
-		case ('A'):
-			s.push_back('T');
-			break;
-		case ('T'):
-			s.push_back('A');
-			break;
-		case ('G'):
-			s.push_back('C');
-			break;
-		case ('C'):
-			s.push_back('G');
-			break;
-	}
+std::string DNAStrand(const std::string &dna)
+{
+  std::string s{};
+  for (char item : dna)
+  {
+    switch (item)
+    {
+    case ('A'): s.push_back('T'); break;
+    case ('T'): s.push_back('A'); break;
+    case ('G'): s.push_back('C'); break;
+    case ('C'): s.push_back('G'); break;
+    }
+  }
+  return s;
 }
-return s;
-}
-

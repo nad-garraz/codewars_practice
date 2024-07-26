@@ -13,26 +13,24 @@
 	 is_prime(-1) -> false
 	 */
 
-
-
 #include <iostream>
-#include "../templates/templates.h"
 
-using namespace std;
+bool isPrime(long long num);
 
-bool isPrime(long long num) {
-	int j{};
-	if (num <= 1) return false;
-	if (num <= 3) return true;
-	if (num % 2 == 0 or num % 3 == 0) return false;
-	for (int i{5}; i * i <= num; i += 6) {
-		if (num % i == 0 or num % (i + 2) == 0) {
-			return false;
-		}
-	}
-	return true;
+int main(int argc, char *argv[])
+{
+  std::cout << isPrime(12) << std::endl;
+  return 0;
 }
-int main(int argc, char *argv[]) {
-	cout << isPrime(3) << endl;
-	return 0;
+
+bool isPrime(long long num)
+{
+  if (num == 2) return true;
+  if (num <= 1 || num % 2 == 0) return false;
+
+  for (long long tmp{3}; tmp * tmp <= num; tmp += 2)
+  {
+    if (num % tmp == 0) return false;
+  }
+  return true;
 }

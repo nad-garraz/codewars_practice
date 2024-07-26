@@ -37,4 +37,3 @@ int main(int argc, char *argv[]) {
 	std::cout << "R: " << ans << std::endl;
 	return 0;
 }
-

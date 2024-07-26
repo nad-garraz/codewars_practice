@@ -24,29 +24,29 @@ int         recursiveFactorial(int n);
 int main(int argc, char *argv[])
 {
 
-  std::cout << sum_strings("835", "2994") << std::endl;
-  std::cout << recursiveFactorial(4) << std::endl;
-  return 0;
+          std::cout << sum_strings("835", "2994") << std::endl;
+          std::cout << recursiveFactorial(10) << std::endl;
+          return 0;
 }
 
 std::string sum_strings(const std::string &a, const std::string &b)
 {
-  std::string up   = a.size() >= b.size() ? a : b;
-  std::string down = up == a ? b : a;
+          std::string up   = a.size() >= b.size() ? a : b;
+          std::string down = up == a ? b : a;
 
-  std::cout << "Up: " << up << std::endl;
-  std::cout << "Down: " << down << std::endl;
+          std::cout << "Up: " << up << std::endl;
+          std::cout << "Down: " << down << std::endl;
 
-  for (auto &letra : up)
-  {
-    std::cout << (letra - 48) << std::endl;
-    std::cout << "Index: " << &letra - &up[0] << std::endl;
-  }
-  return "";
+          for (auto &letra : up)
+          {
+                    std::cout << (letra - 48) << std::endl;
+                    std::cout << "Index: " << &letra - &up[0] << std::endl;
+          }
+          return "";
 }
 
 int recursiveFactorial(int n)
 {
-  if (n <= 1) return 1;
-  return n * recursiveFactorial(n - 1);
+          if (n <= 1) return 1;
+          return n * recursiveFactorial(n - 1);
 }
